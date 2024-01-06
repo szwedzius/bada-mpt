@@ -2,7 +2,9 @@ package com.database.MPT.controller;
 
 import com.database.MPT.model.Pracownicy;
 import com.database.MPT.services.PracownicyService;
+import jakarta.annotation.security.RolesAllowed;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,6 +17,7 @@ public class PracownicyController {
     public PracownicyController(PracownicyService pracownicyService) { this.pracownicyService = pracownicyService; }
 
     @GetMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public List<Pracownicy> getPracownicy() { return pracownicyService.getPracownicy(); }
 
     @PostMapping

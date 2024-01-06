@@ -3,6 +3,7 @@ package com.database.MPT.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
@@ -19,8 +20,9 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                .authorizeHttpRequests((authorize) -> authorize
-                        .requestMatchers("/", "/index").permitAll()
-                        .anyRequest().authenticated()
+                       .requestMatchers("/", "/index").permitAll()
+                       .requestMatchers("/gownojebane").hasRole("ADMIN")
+                       .anyRequest().authenticated()
                 )
                 .formLogin(
                         (form) -> form
@@ -36,12 +38,17 @@ public class SecurityConfig {
     }
     @Bean
     public UserDetailsService userDetailsService() {
-        UserDetails userDetails = User.withDefaultPasswordEncoder()
+        UserDetails user = User.withDefaultPasswordEncoder()
                 .username("user")
                 .password("123")
                 .roles("USER")
                 .build();
+        UserDetails admin = User.withDefaultPasswordEncoder()
+                .username("admin")
+                .password("1234")
+                .roles("ADMIN")
+                .build();
 
-        return new InMemoryUserDetailsManager(userDetails);
+        return new InMemoryUserDetailsManager(user, admin);
     }
 }
