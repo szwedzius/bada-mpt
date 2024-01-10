@@ -4,17 +4,13 @@ import com.database.MPT.model.Poczty;
 import com.database.MPT.services.PocztyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/employee/poczty")
-@EnableMethodSecurity(
-        securedEnabled = true,
-        jsr250Enabled = true)
-@Secured("ROLE_EMPLOYEE")
+@Secured("ROLE_USER")
 public class PocztyControllerEmployee {
     private final PocztyService pocztyService;
 

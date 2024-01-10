@@ -28,8 +28,8 @@ public class SecurityConfig {
                .authorizeHttpRequests((authorize) -> authorize
                        .requestMatchers("/", "/index", "/css/**", "/js/**", "/img/**").permitAll()
                        .requestMatchers("/gownojebane").hasRole("ADMIN")
-                       .requestMatchers("/api/admin/**").hasRole("ADMIN")
-                       .requestMatchers("/api/employee/**").hasAnyRole("ADMIN", "EMPLOYEE")
+                       //.requestMatchers("/api/admin/**").hasRole("ADMIN")
+                       //.requestMatchers("/api/employee/**").hasAnyRole("ADMIN", "EMPLOYEE")
                        .anyRequest().authenticated()
                )
                 .formLogin(
@@ -50,7 +50,6 @@ public class SecurityConfig {
                 .username("user")
                 .password("123")
                 .roles("USER")
-                .authorities("R_W_auth_4")
                 .build();
         UserDetails admin = User.withDefaultPasswordEncoder()
                 .username("admin")

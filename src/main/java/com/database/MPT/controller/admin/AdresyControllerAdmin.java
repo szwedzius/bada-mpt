@@ -11,9 +11,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/admin/adresy")
-@EnableMethodSecurity(
-        securedEnabled = true,
-        jsr250Enabled = true)
 @Secured("ROLE_ADMIN")
 public class AdresyControllerAdmin {
     private final AdresyService adresyService;

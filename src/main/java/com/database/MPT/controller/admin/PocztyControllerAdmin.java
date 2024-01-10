@@ -11,9 +11,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/admin/poczty")
-@EnableMethodSecurity(
-        securedEnabled = true,
-        jsr250Enabled = true)
 @Secured("ROLE_ADMIN")
 public class PocztyControllerAdmin {
     private final PocztyService pocztyService;
