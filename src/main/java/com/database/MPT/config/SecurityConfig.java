@@ -20,10 +20,10 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                .authorizeHttpRequests((authorize) -> authorize
-                       .requestMatchers("/", "/index").permitAll()
+                       .requestMatchers("/", "/index", "/css/**", "/js/**", "/img/**").permitAll()
                        .requestMatchers("/gownojebane").hasRole("ADMIN")
                        .anyRequest().authenticated()
-                )
+               )
                 .formLogin(
                         (form) -> form
                                 .loginPage("/login")
@@ -38,12 +38,12 @@ public class SecurityConfig {
     }
     @Bean
     public UserDetailsService userDetailsService() {
-        UserDetails user = User.withDefaultPasswordEncoder()
+        UserDetails user = User.builder()
                 .username("user")
                 .password("123")
                 .roles("USER")
                 .build();
-        UserDetails admin = User.withDefaultPasswordEncoder()
+        UserDetails admin = User.builder()
                 .username("admin")
                 .password("1234")
                 .roles("ADMIN")

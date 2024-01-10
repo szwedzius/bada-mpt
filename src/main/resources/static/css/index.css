@@ -1,0 +1,33 @@
+.topnav{
+    padding-top: 10px;
+    padding-bottom: 20px;
+    border-bottom: solid #63365c;
+}
+
+.main-content{
+    padding-top: 70px;
+    color: white;
+}
+
+.topnav-link{
+    padding-top: 40px;
+    color: white;
+}
+
+.topnav-link:hover{
+    color: #EE7DDC;
+}
+
+#train-container{
+  width: 100vh;
+  height: 10vh;
+}
+
+.train {
+  position: absolute;
+  bottom: 0;
+  height: 50px;
+  width: 100px;
+  border-radius: 5px;
+  animation: moveTrain linear infinite;
+}
