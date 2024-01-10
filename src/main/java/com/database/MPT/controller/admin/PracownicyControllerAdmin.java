@@ -1,24 +1,27 @@
-package com.database.MPT.controller;
+package com.database.MPT.controller.admin;
 
 import com.database.MPT.model.Pracownicy;
 import com.database.MPT.services.PracownicyService;
-import jakarta.annotation.security.RolesAllowed;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "api/v1/pracownicy")
-public class PracownicyController {
+@RequestMapping(path = "api/admin/pracownicy")
+@EnableMethodSecurity(
+        securedEnabled = true,
+        jsr250Enabled = true)
+@Secured("ROLE_ADMIN")
+public class PracownicyControllerAdmin {
     private final PracownicyService pracownicyService;
     @Autowired
-    public PracownicyController(PracownicyService pracownicyService) { this.pracownicyService = pracownicyService; }
+    public PracownicyControllerAdmin(PracownicyService pracownicyService) { this.pracownicyService = pracownicyService; }
 
     @GetMapping
-    @PreAuthorize("hasRole('ADMIN')")
-    public List<Pracownicy> getPracownicy() { return pracownicyService.getPracownicy(); }
+    public List<Pracownicy> getPracownicy() { return pracownicyService.getPracownicyForAdmin(); }
 
     @PostMapping
     public void newPracownicyEntity(@RequestBody Pracownicy pracownik) { pracownicyService.newPracownicyEntity(pracownik); }
@@ -33,6 +36,6 @@ public class PracownicyController {
             @PathVariable("pracownikId") Integer id,
             @RequestBody Pracownicy pracownik
     ) {
-        pracownicyService.updatePracownicy(id, pracownik);
+        pracownicyService.updatePracownicyForAdmin(id, pracownik);
     }
 }

@@ -1,32 +1,29 @@
-package com.database.MPT.controller;
+package com.database.MPT.controller.admin;
 
 import com.database.MPT.model.Adresy;
 import com.database.MPT.services.AdresyService;
-import jakarta.annotation.security.RolesAllowed;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "api/v1/adresy")
+@RequestMapping(path = "api/admin/adresy")
 @EnableMethodSecurity(
         securedEnabled = true,
         jsr250Enabled = true)
-public class AdresyController {
+@Secured("ROLE_ADMIN")
+public class AdresyControllerAdmin {
     private final AdresyService adresyService;
 
     @Autowired
-    public AdresyController(AdresyService adresyService) {
+    public AdresyControllerAdmin(AdresyService adresyService) {
         this.adresyService = adresyService;
     }
 
     @GetMapping
-    @Secured("ROLE_ADMIN")
     public List<Adresy> getAdresy() {
         return adresyService.getAdresy();
     }
