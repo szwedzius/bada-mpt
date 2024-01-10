@@ -24,12 +24,12 @@ public class PracownicyService {
     public List<Pracownicy> getPracownicyForAdmin() {
         return pracownicyRepository.findAll();
     }
-    public List<Pracownicy> getPracownicyForEmployee(User user) {
-        /*Collection<GrantedAuthority> authoritiesList = user.getAuthorities();
+    public List<com.database.MPT.model.PracownicyDto> getPracownicyForEmployee(User user) {
+        Collection<GrantedAuthority> authoritiesList = user.getAuthorities();
         String authority = authoritiesList.iterator().next().getAuthority();
         int id = Character.getNumericValue(authority.charAt(authority.length() - 1));
-        return pracownicyRepository.findForEmployee(id);*/
-        return pracownicyRepository.findAll();
+        return pracownicyRepository.findForEmployee(id);
+        //return pracownicyRepository.findAll();
     }
 
     public void newPracownicyEntity(Pracownicy pracownik) {
