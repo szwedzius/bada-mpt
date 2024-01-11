@@ -1,0 +1,41 @@
+.login-panels{
+
+    margin-top: 20vh;
+    height: 50vh;
+}
+
+.logo-panel{
+    padding-top: 10px;
+    background: url("img/tram_login.webp")
+}
+
+.login-panel{
+    padding-top: 10px;
+}
+
+#login{
+    margin-top: 40px;
+    border-radius: 0px;
+    border: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+#password{
+    margin-top: 20px;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+#login_button{
+    margin-top: 40px;
+    background: white;
+    border: 0;
+    background: #27a87d;
+    width: 222px;
+}
+
+

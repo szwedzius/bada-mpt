@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     train.animate([
       { transform: "translateX(80vw)" },
-      { transform: "translateX(-50px)" }
+      { transform: "translateX(50px)" }
     ], {
       duration: speed * 700,
       easing: "linear",
