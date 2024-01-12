@@ -1,19 +1,21 @@
-package com.database.MPT.controller;
+package com.database.MPT.controller.employee;
 
 import com.database.MPT.model.Adresy;
 import com.database.MPT.services.AdresyService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "api/v1/adresy")
-public class AdresyController {
+@RequestMapping(path = "api/employee/adresy")
+@Secured("ROLE_USER")
+public class AdresyControllerEmployee {
     private final AdresyService adresyService;
 
     @Autowired
-    public AdresyController(AdresyService adresyService) {
+    public AdresyControllerEmployee(AdresyService adresyService) {
         this.adresyService = adresyService;
     }
 
@@ -25,11 +27,6 @@ public class AdresyController {
     @PostMapping
     public void registerNewAdresy(@RequestBody Adresy adres) {
         adresyService.addNewAdresy(adres);
-    }
-
-    @DeleteMapping(path = "{adresId}")
-    public void deleteAdres(@PathVariable("adresId") Integer id) {
-        adresyService.deleteAdresy(id);
     }
 
     @PutMapping(path = "{adresId}")
