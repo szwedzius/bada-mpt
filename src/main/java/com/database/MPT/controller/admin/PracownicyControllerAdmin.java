@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/admin/pracownicy")
-@Secured("ROLE_ADMIN")
+//@Secured("ROLE_ADMIN")
 public class PracownicyControllerAdmin {
     private final PracownicyService pracownicyService;
     @Autowired

@@ -14,7 +14,7 @@
 <body style="background-color: #10042c; font-family: 'Raleway', sans-serif;">
 <nav class="nav justify-content-center topnav">
     <a class="nav-link px-sm-5 px-4 topnav-link" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">MANAGE</a>
-    <a class="nav-link px-sm-5 px-4 topnav-link" th:href="@{/hello}">HOME</a>
+    <a class="nav-link px-sm-5 px-4 topnav-link" href="#">HOME</a>
     <a class="nav-link px-sm-5 px-4" href="#">
         <img src="img/tramco-high-resolution-logo-transparent.png" alt="">
     </a>
@@ -36,15 +36,39 @@
                     </ul>
             </div>
         </div>
-        <div class="col-sm-1"></div>
-        <div class="col-sm-5">
-            <h1>User Panel</h1>
-            <p>Click <a th:href="@{/login}">here</a> to see a Main Page.</p>
-            <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut consequuntur cum hic molestiae nam nisi officiis quis repellendus temporibus. Cumque odit perspiciatis sit. Culpa eius iure laborum quisquam voluptates!</h5>
-        </div>
-        <div class="col-sm-5">
-            <img src="img/mapa.png" class="img-fluid p-3" alt="mapa">
-        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">imie</th>
+                    <th scope="col">nazwisko</th>
+                    <th scope="col">data_urodzenia</th>
+                    <th scope="col">pesel</th>
+                    <th scope="col">plec</th>
+                    <th scope="col">nr_konta</th>
+                    <th scope="col">koniec_umowy</th>
+                    <th scope="col">id_biura</th>
+                    <th scope="col">id_zajezdni</th>
+                    <th scope="col">id_adresu</th>
+                    <th scope="col">id_stanowiska</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="pracownik: ${pracownicy}">
+                    <td th:text="${pracownik.imie}" scope="row">imie</td>
+                    <td th:text="${pracownik.nazwisko}" scope="row">nazwisko</td>
+                    <td th:text="${pracownik.data_urodzenia}" scope="row">data_urodzenia</td>
+                    <td th:text="${pracownik.pesel}" scope="row">pesel</td>
+                    <td th:text="${pracownik.plec}" scope="row">plec</td>
+                    <td th:text="${pracownik.nr_konta}" scope="row">nr_konta</td>
+                    <td th:text="${pracownik.koniec_umowy}" scope="row">koniec_umowy</td>
+                    <td th:text="${pracownik.id_biura}" scope="row">id_biura</td>
+                    <td th:text="${pracownik.id_zajezdni}" scope="row">id_zajezdni</td>
+                    <td th:text="${pracownik.id_adresu}" scope="row">id_adresu</td>
+                    <td th:text="${pracownik.id_stanowiska}" scope="row">id_stanowiska</td>
+                </tr>
+            </tbody>
+        </table>
+
     </div>
 </div>
 </body>

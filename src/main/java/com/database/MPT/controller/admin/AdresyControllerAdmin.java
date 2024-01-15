@@ -5,13 +5,15 @@ import com.database.MPT.services.AdresyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping(path = "api/admin/adresy")
-@Secured("ROLE_ADMIN")
+//@Secured("ROLE_ADMIN")
 public class AdresyControllerAdmin {
     private final AdresyService adresyService;
 
@@ -43,4 +45,5 @@ public class AdresyControllerAdmin {
     ) {
         adresyService.updateAdresy(id, adres);
     }
+
 }

@@ -14,7 +14,7 @@
 <body style="background-color: #10042c; font-family: 'Raleway', sans-serif;">
 <nav class="nav justify-content-center topnav">
     <a class="nav-link px-sm-5 px-4 topnav-link" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">MANAGE</a>
-    <a class="nav-link px-sm-5 px-4 topnav-link" th:href="@{/hello}">HOME</a>
+    <a class="nav-link px-sm-5 px-4 topnav-link" href="#">HOME</a>
     <a class="nav-link px-sm-5 px-4" href="#">
         <img src="img/tramco-high-resolution-logo-transparent.png" alt="">
     </a>
@@ -36,15 +36,27 @@
                     </ul>
             </div>
         </div>
-        <div class="col-sm-1"></div>
-        <div class="col-sm-5">
-            <h1>User Panel</h1>
-            <p>Click <a th:href="@{/login}">here</a> to see a Main Page.</p>
-            <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut consequuntur cum hic molestiae nam nisi officiis quis repellendus temporibus. Cumque odit perspiciatis sit. Culpa eius iure laborum quisquam voluptates!</h5>
-        </div>
-        <div class="col-sm-5">
-            <img src="img/mapa.png" class="img-fluid p-3" alt="mapa">
-        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">id_adresu</th>
+                    <th scope="col">miasto</th>
+                    <th scope="col">ulica</th>
+                    <th scope="col">nr_budynku</th>
+                    <th scope="col">id_poczty</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="adres: ${adresy}">
+                    <td th:text="${adres.id_adresu}" scope="row">id_adresu</td>
+                    <td th:text="${adres.miasto}" scope="row">miasto</td>
+                    <td th:text="${adres.ulica}" scope="row">ulica</td>
+                    <td th:text="${adres.nr_budynku}" scope="row">nr_budynku</td>
+                    <td th:text="${adres.id_poczty}" scope="row">id_poczty</td>
+                </tr>
+            </tbody>
+        </table>
+
     </div>
 </div>
 </body>
