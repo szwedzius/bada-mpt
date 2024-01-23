@@ -11,7 +11,9 @@ import java.util.List;
 @Repository
 public interface PracownicyRepository extends JpaRepository<Pracownicy, Integer> {
 
-    @Query("SELECT NEW com.database.MPT.model.PracownicyDto(p.id_pracownika, p.koniec_umowy," +
+    @Query("SELECT NEW com.database.MPT.model.PracownicyDto(p.id_pracownika, p.imie, p.nazwisko, p.koniec_umowy," +
             "p.id_biura, p.id_zajezdni, p.id_stanowiska) FROM Pracownicy p")
     List<PracownicyDto> findForEmployee(int id);
+    @Query("SELECT p FROM Pracownicy p WHERE p.id_pracownika = :id")
+    Pracownicy findPracownik(int id);
 }

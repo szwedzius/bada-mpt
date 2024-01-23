@@ -25,11 +25,12 @@ public class PracownicyControllerEmployee {
         //return "siema, kurwa";
     }
 
-    /*@PostMapping(path = "{pracownikId}")
+    @PostMapping(path = "{pracownikId}")
     public void updatePracownicy(
+            @AuthenticationPrincipal User user,
             @PathVariable("pracownikId") Integer id,
             @RequestBody Pracownicy pracownik
     ) {
-        pracownicyService.updatePracownicyForEmployee(id, pracownik);
-    }*/
+        pracownicyService.updatePracownicyForEmployee(user, id, pracownik);
+    }
 }

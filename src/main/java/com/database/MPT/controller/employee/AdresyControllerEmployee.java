@@ -4,6 +4,8 @@ import com.database.MPT.model.Adresy;
 import com.database.MPT.services.AdresyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,10 +33,10 @@ public class AdresyControllerEmployee {
 
     @PutMapping(path = "{adresId}")
     public void updateAdresy(
+            @AuthenticationPrincipal User user,
             @PathVariable("adresId") Integer id,
-            //@RequestParam(required = false) String ulica
             @RequestBody Adresy adres
     ) {
-        adresyService.updateAdresy(id, adres);
+        adresyService.updateAdresyforEmployee(user, id, adres);
     }
 }

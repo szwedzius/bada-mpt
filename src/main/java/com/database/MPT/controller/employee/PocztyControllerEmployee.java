@@ -24,12 +24,4 @@ public class PocztyControllerEmployee {
     public void newPocztyEntity(@RequestBody Poczty poczta) {
         pocztyService.newPocztyEntity(poczta);
     }
-
-    @PutMapping(path = "{pocztaId}")
-    public void updatePoczty(
-            @PathVariable("pocztaId") Integer id,
-            @RequestBody Poczty poczta
-    ) {
-        pocztyService.updatePoczty(id, poczta);
-    }
 }

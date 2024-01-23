@@ -41,6 +41,6 @@ public class AdresyControllerAdmin {
             //@RequestParam(required = false) String ulica
             @RequestBody Adresy adres
     ) {
-        adresyService.updateAdresy(id, adres);
+        adresyService.updateAdresyforAdmin(id, adres);
     }
 }

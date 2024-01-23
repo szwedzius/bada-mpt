@@ -9,6 +9,8 @@ import java.util.Date;
 @Getter @Setter
 public class PracownicyDto {
     private int id_pracownika;
+    private String imie;
+    private String nazwisko;
     private Date koniec_umowy;
     private int id_biura;
     private int id_zajezdni;
