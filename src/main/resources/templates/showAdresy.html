@@ -8,18 +8,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/hello.css">
+    <link rel="stylesheet" href="css/show.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <title>Welcome Page</title>
 </head>
 <body style="background-color: #10042c; font-family: 'Raleway', sans-serif;">
 <nav class="nav justify-content-center topnav">
     <a class="nav-link px-sm-5 px-4 topnav-link" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">MANAGE</a>
-    <a class="nav-link px-sm-5 px-4 topnav-link" href="#">HOME</a>
+    <a class="nav-link px-sm-5 px-4 topnav-link d-none d-lg-block" href="#">HOME</a>
     <a class="nav-link px-sm-5 px-4" href="#">
         <img src="img/tramco-high-resolution-logo-transparent.png" alt="">
     </a>
     <a class="nav-link active px-sm-5 px-4 topnav-link" th:href="@{/}" th:action="@{/logout}">LOGOUT</a>
-    <a class="nav-link px-sm-5 px-4 topnav-link" href="#">ABOUT</a>
+    <a class="nav-link px-sm-5 px-4 topnav-link d-none d-lg-block" href="#">ABOUT</a>
 </nav>
 <div class="container main-content">
     <div class="row">
@@ -47,17 +48,64 @@
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="adres: ${adresy}">
-                    <td th:text="${adres.id_adresu}" scope="row">id_adresu</td>
-                    <td th:text="${adres.miasto}" scope="row">miasto</td>
-                    <td th:text="${adres.ulica}" scope="row">ulica</td>
-                    <td th:text="${adres.nr_budynku}" scope="row">nr_budynku</td>
-                    <td th:text="${adres.id_poczty}" scope="row">id_poczty</td>
+                <tr th:each="adres: ${adresy}" class="table-row">
+                    <td th:text="${adres.id_adresu}" th:class="id" scope="row">id_adresu</td>
+                    <td th:text="${adres.miasto}" th:class="miasto" scope="row">miasto</td>
+                    <td th:text="${adres.ulica}" th:class="ulica" scope="row">ulica</td>
+                    <td th:text="${adres.nr_budynku}" th:class="budynek" scope="row">nr_budynku</td>
+                    <td th:text="${adres.id_poczty}" th:class="poczta" scope="row">id_poczty</td>
                 </tr>
             </tbody>
         </table>
 
     </div>
 </div>
+<div id="overlay" style="display:none;"></div>
+<div id="form" style="display: none;">
+    <form th:action="@{/api/admin/adresy}" th:method="put">
+        <input type="hidden" name="id" id="id-input"/>
+        <div class="form-head">
+            <div id="closeButton3" class="closeButton2">x</div>
+            <h1 class="mt-3" id="popup-heading"> Adres</h1>
+            <button id="closeButton" class="closeButton2">x</button>
+        </div>
+        <div class="form-data">
+            <div id="miasto-data" class="data-container">
+                <h3 class="data-label">Miasto: </h3>
+                <input type="text" name="miasto" id="miasto-input" class="db-input">
+            </div>
+        </div>
+        <div class="form-data">
+            <div id="ulica-data" class="data-container">
+                <h3 class="data-label">Ulica: </h3>
+                <input type="text" name="ulica" id="ulica-input" class="db-input">
+            </div>
+        </div>
+        <div class="form-data">
+            <div id="budynek-data" class="data-container">
+                <h3 class="data-label">nr_budynku: </h3>
+                <input type="text" name="nr_budynku" id="budynek-input" class="db-input">
+            </div>
+        </div>
+        <div class="form-data">
+            <div id="poczta-data" class="data-container">
+                <h3 class="data-label">id_poczty: </h3>
+                <input type="text" name="id_poczty" id="poczta-input" class="db-input">
+            </div>
+        </div>
+        <div class="form-data">
+            <div id="" class="button-container">
+                <h3 class="data-label">       </h3>
+                <input type="submit" class="delete-input" id="deleteButton" value="delete">
+                <input type="submit" class="save-input" id="saveButton" value="save">
+            </div>
+        </div>
+    </form>
+    <form  th:action="@{/api/admin/adresy}" th:method="delete" id="deleteForm">
+        <input type="hidden" name="id" id="deleteId">
+    </form>
+
+</div>
+<script src="js/showAdresy.js"></script>
 </body>
 </html>
