@@ -12,6 +12,11 @@ opacity: 0;
 transition: 0.3s;
 }
 
+#form2{
+opacity: 0;
+transition: 0.3s;
+}
+
 
 @media screen and (min-width: 0px) and (max-width: 992px){
     #form{
@@ -24,7 +29,29 @@ transition: 0.3s;
     }
 }
 
+@media screen and (min-width: 0px) and (max-width: 992px){
+    #form2{
+        position:fixed;
+        top:0;
+        left:0;
+        height:100vh;
+        width:100vw;
+        background-color: white;
+    }
+}
+
 #overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color: black;
+    transition: 0.3s;
+    opacity:0;
+}
+
+#overlay2{
     position:fixed;
     top:0;
     left:0;
@@ -52,6 +79,18 @@ transition: 0.3s;
     }
 }
 
+@media screen and (min-width: 992px){
+    #form2{
+        margin-top:116px;
+        margin-left:30vw;
+        height:70vh;
+        top:30vh;
+        width:40vw;
+        background-color: white;
+        position:fixed;
+    }
+}
+
 .closeButton2{
     font-size: calc(1.375rem + 1.5vw);
     background-color: white;
@@ -66,6 +105,10 @@ transition: 0.3s;
     color: white;
 }
 
+#closeButton4{
+    color: white;
+}
+
 .offset-form{
     flex-grow: 1;
     flex-basis: auto;
@@ -76,9 +119,18 @@ transition: 0.3s;
     color: #f00e59;
 }
 
+#closeButton5:hover{
+    color: #f00e59;
+}
 
 
 #popup-heading {
+    text-align: center;
+    flex-grow: 2;
+    flex-basis: auto;
+}
+
+#create-heading {
     text-align: center;
     flex-grow: 2;
     flex-basis: auto;
@@ -100,6 +152,18 @@ transition: 0.3s;
     display: flex;
     flex-direction: row-reverse;
     margin-bottom: 20px;
+}
+
+.plus{
+    font-size: 30px;
+    margin-left: 41vw;
+    margin-right: 42vw;
+    cursor:pointer;
+    transition: 0.1s;
+}
+
+.plus:hover{
+    color: #EE7DDC;
 }
 
 .delete-input{

@@ -57,8 +57,51 @@
                 </tr>
             </tbody>
         </table>
-
     </div>
+
+    <div class="plus" id="plus">
+        +
+    </div>
+</div>
+<div id="overlay2" style="display:none;"></div>
+<div id="form2" style="display: none;">
+    <form th:action="@{/api/admin/adresy}" th:method="post">
+        <div class="form-head">
+            <div id="closeButton4" class="closeButton2">x</div>
+            <h1 class="mt-3" id="create-heading"> Create</h1>
+            <button id="closeButton5" class="closeButton2">x</button>
+        </div>
+        <div class="form-data">
+            <div id="miasto-create" class="data-container">
+                <h3 class="data-label">Miasto: </h3>
+                <input type="text" name="miasto" id="miasto-create-input" class="db-input">
+            </div>
+        </div>
+        <div class="form-data">
+            <div id="ulica-create" class="data-container">
+                <h3 class="data-label">Ulica: </h3>
+                <input type="text" name="ulica" id="ulica-create-input" class="db-input">
+            </div>
+        </div>
+        <div class="form-data">
+            <div id="budynek-create" class="data-container">
+                <h3 class="data-label">nr_budynku: </h3>
+                <input type="text" name="nr_budynku" id="budynek-create-input" class="db-input">
+            </div>
+        </div>
+        <div class="form-data">
+            <div id="poczta-create" class="data-container">
+                <h3 class="data-label">id_poczty: </h3>
+                <input type="text" name="id_poczty" id="poczta-create-input" class="db-input">
+            </div>
+        </div>
+        <div class="form-data">
+            <div id="buttons" class="button-container">
+                <h3 class="data-label">       </h3>
+                <input type="submit" class="save-input" id="createButton" value="create">
+            </div>
+        </div>
+    </form>
 </div>
 <div id="overlay" style="display:none;"></div>
 <div id="form" style="display: none;">

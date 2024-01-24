@@ -37,13 +37,15 @@ public class AdresyControllerAdmin {
     }
 
     @PostMapping
-    public void registerNewAdresy(@RequestBody Adresy adres) {
+    public ModelAndView registerNewAdresy(@ModelAttribute Adresy adres) {
         adresyService.addNewAdresy(adres);
+        return new ModelAndView("redirect:/showAdresy");
     }
 
     @DeleteMapping()
-    public void deleteAdres(@RequestParam("id") Integer id) {
+    public ModelAndView deleteAdres(@RequestParam("id") Integer id) {
         adresyService.deleteAdresy(id);
+        return new ModelAndView("redirect:/showAdresy");
     }
 
 
