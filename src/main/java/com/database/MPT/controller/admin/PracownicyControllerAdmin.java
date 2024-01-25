@@ -24,9 +24,10 @@ public class PracownicyControllerAdmin {
     @PostMapping
     public void newPracownicyEntity(@RequestBody Pracownicy pracownik) { pracownicyService.newPracownicyEntity(pracownik); }
 
-    @DeleteMapping(path = "{pracownikId}")
-    public void deletePracownicy(@PathVariable("pracownikId") Integer id) {
+    @DeleteMapping
+    public ModelAndView deletePracownicy(@RequestParam("id") Integer id) {
         pracownicyService.deletePracownicy(id);
+        return new ModelAndView("redirect:/showPracownicy");
     }
 
     @PutMapping
