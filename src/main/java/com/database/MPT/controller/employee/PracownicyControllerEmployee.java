@@ -8,28 +8,29 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/employee/pracownicy")
-@Secured("ROLE_USER")
+
 public class PracownicyControllerEmployee {
     private final PracownicyService pracownicyService;
     @Autowired
     public PracownicyControllerEmployee(PracownicyService pracownicyService) { this.pracownicyService = pracownicyService; }
 
     @GetMapping
-    public List<com.database.MPT.model.PracownicyDto> getPracownicy(@AuthenticationPrincipal User user) {
-        return pracownicyService.getPracownicyForEmployee(user);
-        //return "siema, kurwa";
+    public Pracownicy getPracownicy() {
+        return pracownicyService.getUserPracownik().get(1);
     }
 
-    /*@PostMapping(path = "{pracownikId}")
-    public void updatePracownicy(
-            @PathVariable("pracownikId") Integer id,
-            @RequestBody Pracownicy pracownik
+    @PutMapping
+    public ModelAndView updatePracownicy(
+            @RequestParam Integer id,
+            @ModelAttribute Pracownicy pracownik
     ) {
-        pracownicyService.updatePracownicyForEmployee(id, pracownik);
-    }*/
+        pracownicyService.updatePracownicyForAdmin(id, pracownik);
+        return new ModelAndView("redirect:/user");
+    }
 }

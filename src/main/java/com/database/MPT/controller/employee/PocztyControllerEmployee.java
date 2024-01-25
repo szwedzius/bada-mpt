@@ -10,7 +10,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/employee/poczty")
-@Secured("ROLE_USER")
 public class PocztyControllerEmployee {
     private final PocztyService pocztyService;
 

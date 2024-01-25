@@ -1,9 +1,9 @@
 package com.database.MPT.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -19,6 +19,9 @@ public class Pracownicy {
     private int id_pracownika;
     private String imie;
     private String nazwisko;
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(columnDefinition = "DATE")
     private Date data_urodzenia;
     private String pesel;
     private char plec;

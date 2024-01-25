@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -28,11 +29,12 @@ public class PracownicyControllerAdmin {
         pracownicyService.deletePracownicy(id);
     }
 
-    @PostMapping(path = "{pracownikId}")
-    public void updatePracownicy(
-            @PathVariable("pracownikId") Integer id,
-            @RequestBody Pracownicy pracownik
+    @PutMapping
+    public ModelAndView updatePracownicy(
+            @RequestParam Integer id,
+            @ModelAttribute Pracownicy pracownik
     ) {
         pracownicyService.updatePracownicyForAdmin(id, pracownik);
+        return new ModelAndView("redirect:/showPracownicy");
     }
 }

@@ -8,13 +8,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/hello.css">
+    <link rel="stylesheet" href="css/show.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <title>Welcome Page</title>
 </head>
 <body style="background-color: #10042c; font-family: 'Raleway', sans-serif;">
 <nav class="nav justify-content-center topnav">
-    <a class="nav-link px-sm-5 px-4 topnav-link" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">MANAGE</a>
-    <a class="nav-link px-sm-5 px-4 topnav-link d-none d-lg-block" th:href="@{/hello}">HOME</a>
+    <a class="nav-link px-sm-5 px-4 topnav-link" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">VIEW</a>
+    <a class="nav-link px-sm-5 px-4 topnav-link d-none d-lg-block" th:href="@{/user}">HOME</a>
     <a class="nav-link px-sm-5 px-4" href="#">
         <img src="img/tramco-high-resolution-logo-transparent.png" alt="">
     </a>
@@ -29,25 +30,32 @@
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
-                    <ul>
-                        <li><a class="dropdown-item" th:href="@{/showAdresy}">ADRESY</a></li>
-                        <li><a class="dropdown-item" th:href="@{/showPoczty}">POCZTY</a></li>
-                        <li><a class="dropdown-item" th:href="@{/showPracownicy}">PRACOWNICY</a></li>
-                    </ul>
+                <ul>
+                    <li><a class="dropdown-item" th:href="@{/userAdresy}">ADRESY</a></li>
+                    <li><a class="dropdown-item" th:href="@{/userPoczty}">POCZTY</a></li>
+                </ul>
             </div>
         </div>
-        <div class="col-sm-1"></div>
-        <div class="col-sm-5">
-            <h1>ADMIN Panel</h1>
-            <p>Click <a th:href="@{/login}">here</a> to see a Main Page.</p>
-            <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut consequuntur cum hic molestiae nam nisi officiis quis repellendus temporibus. Cumque odit perspiciatis sit. Culpa eius iure laborum quisquam voluptates!</h5>
-        </div>
-        <div class="col-sm-5">
-            <img src="img/mapa.png" class="img-fluid p-3" alt="mapa">
-        </div>
+        <table>
+            <thead>
+            <tr>
+                <th scope="col">id_adresu</th>
+                <th scope="col">miasto</th>
+                <th scope="col">ulica</th>
+                <th scope="col">nr_budynku</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="adres: ${adresy}" class="table-row">
+                <td th:text="${adres.id_adresu}" th:class="id" scope="row">id_adresu</td>
+                <td th:text="${adres.miasto}" th:class="miasto" scope="row">miasto</td>
+                <td th:text="${adres.ulica}" th:class="ulica" scope="row">ulica</td>
+                <td th:text="${adres.nr_budynku}" th:class="budynek" scope="row">nr_budynku</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
-
 
 </body>
 </html>

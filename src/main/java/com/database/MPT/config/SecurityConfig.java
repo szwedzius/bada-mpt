@@ -27,9 +27,8 @@ public class SecurityConfig {
         http
                .authorizeHttpRequests((authorize) -> authorize
                        .requestMatchers("/", "/index", "/css/**", "/js/**", "/img/**", "/api/**").permitAll()
-                       //.requestMatchers("/gownojebane").hasRole("ADMIN")
-                       //.requestMatchers("/api/admin/**").hasRole("ADMIN")
-                       //.requestMatchers("/api/employee/**").hasAnyRole("ADMIN", "EMPLOYEE")
+                       .requestMatchers("/showAdresy", "/showPoczty", "/showPracownicy").hasRole("ADMIN")
+                       .requestMatchers("/userAdresy", "/userPoczty").hasAnyRole("ADMIN", "USER")
                        .anyRequest().authenticated()
                )
                 .formLogin(

@@ -32,6 +32,10 @@ public class PracownicyService {
         //return pracownicyRepository.findAll();
     }
 
+    public List<Pracownicy> getUserPracownik(){
+        return pracownicyRepository.findAll();
+    }
+
     public void newPracownicyEntity(Pracownicy pracownik) {
         pracownicyRepository.save(pracownik);
     }

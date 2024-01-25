@@ -41,6 +41,26 @@ public class WebController {
         model.addAttribute("adresy", responseBody);
     }
 
+    @GetMapping("/userAdresy")
+    public void userAdresy(Model model) {
+        String apiUrl = "http://localhost:8080/api/employee/adresy";
+        String username = "user";
+        String password = "123";
+
+        // Set up RestTemplate with Basic Authentication
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBasicAuth(username, password);
+        HttpEntity<String> httpEntity = new HttpEntity<>(headers);
+
+        // Make a GET request
+        ResponseEntity<Adresy[]> responseEntity = restTemplate.getForEntity(apiUrl, Adresy[].class, httpEntity);
+
+        // Handle the response
+        Adresy[] responseBody = responseEntity.getBody();
+        model.addAttribute("adresy", responseBody);
+    }
+
     @GetMapping("/showPoczty")
     public void showPoczty(Model model) {
         String apiUrl = "http://localhost:8080/api/admin/poczty";
@@ -58,7 +78,26 @@ public class WebController {
 
         // Handle the response
         Poczty[] responseBody = responseEntity.getBody();
-        System.out.println(Arrays.toString(responseBody));
+        model.addAttribute("poczty", responseBody);
+    }
+
+    @GetMapping("/userPoczty")
+    public void userPoczty(Model model) {
+        String apiUrl = "http://localhost:8080/api/employee/poczty";
+        String username = "admin";
+        String password = "1234";
+
+        // Set up RestTemplate with Basic Authentication
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBasicAuth(username, password);
+        HttpEntity<String> httpEntity = new HttpEntity<>(headers);
+
+        // Make a GET request
+        ResponseEntity<Poczty[]> responseEntity = restTemplate.getForEntity(apiUrl, Poczty[].class, httpEntity);
+
+        // Handle the response
+        Poczty[] responseBody = responseEntity.getBody();
         model.addAttribute("poczty", responseBody);
     }
 
@@ -79,8 +118,27 @@ public class WebController {
 
         // Handle the response
         Pracownicy[] responseBody = responseEntity.getBody();
-        System.out.println(Arrays.toString(responseBody));
         model.addAttribute("pracownicy", responseBody);
+    }
+
+    @GetMapping("/user")
+    public void userPracownicy(Model model) {
+        String apiUrl = "http://localhost:8080/api/employee/pracownicy";
+        String username = "admin";
+        String password = "1234";
+
+        // Set up RestTemplate with Basic Authentication
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBasicAuth(username, password);
+        HttpEntity<String> httpEntity = new HttpEntity<>(headers);
+
+        // Make a GET request
+        ResponseEntity<Pracownicy> responseEntity = restTemplate.getForEntity(apiUrl, Pracownicy.class, httpEntity);
+
+        // Handle the response
+        Pracownicy responseBody = responseEntity.getBody();
+        model.addAttribute("pracownik", responseBody);
     }
 
 

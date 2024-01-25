@@ -2,18 +2,20 @@ const rows = document.querySelectorAll(".table-row")
 
 rows.forEach((row) => {
     row.addEventListener("click", () => {
-        const data = row.querySelector(".id").textContent + '\n' + row.querySelector(".miasto").textContent + '\n'
-        + row.querySelector(".ulica").textContent + '\n' + row.querySelector(".budynek").textContent + '\n' +
-        row.querySelector(".poczta").textContent
         //alert(data)
         document.getElementById("id-input").value = row.querySelector(".id").textContent
         document.getElementById("deleteId").value = row.querySelector(".id").textContent
-        document.getElementById("miasto-input").value = row.querySelector(".miasto").textContent
-        document.getElementById("ulica-input").value = row.querySelector(".ulica").textContent
-        document.getElementById("budynek-input").value = row.querySelector(".budynek").textContent
-        document.getElementById("poczta-input").value = row.querySelector(".poczta").textContent
-
-
+        document.getElementById("imie-input").value = row.querySelector(".imie").textContent
+        document.getElementById("nazwisko-input").value = row.querySelector(".nazwisko").textContent
+        document.getElementById("urodzenia-input").value = row.querySelector(".data_urodzenia").textContent
+        document.getElementById("pesel-input").value = row.querySelector(".pesel").textContent
+        document.getElementById("konto-input").value = row.querySelector(".nr_konta").textContent
+        document.getElementById("umowa-input").value = row.querySelector(".koniec_umowy").textContent
+        document.getElementById("biuro-input").value = row.querySelector(".id_biura").textContent
+        document.getElementById("zajezdnia-input").value = row.querySelector(".id_zajezdni").textContent
+        document.getElementById("adres-input").value = row.querySelector(".id_adresu").textContent
+        document.getElementById("stanowisko-input").value = row.querySelector(".id_stanowiska").textContent
+        document.getElementById("plec-input").value = row.querySelector(".plec").textContent
 
         document.getElementById("form").style.display = "block";
         document.getElementById("overlay").style.display="block";

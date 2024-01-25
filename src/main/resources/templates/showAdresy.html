@@ -15,12 +15,12 @@
 <body style="background-color: #10042c; font-family: 'Raleway', sans-serif;">
 <nav class="nav justify-content-center topnav">
     <a class="nav-link px-sm-5 px-4 topnav-link" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">MANAGE</a>
-    <a class="nav-link px-sm-5 px-4 topnav-link d-none d-lg-block" href="#">HOME</a>
+    <a class="nav-link px-sm-5 px-4 topnav-link d-none d-lg-block" th:href="@{/hello}">HOME</a>
     <a class="nav-link px-sm-5 px-4" href="#">
         <img src="img/tramco-high-resolution-logo-transparent.png" alt="">
     </a>
     <a class="nav-link active px-sm-5 px-4 topnav-link" th:href="@{/}" th:action="@{/logout}">LOGOUT</a>
-    <a class="nav-link px-sm-5 px-4 topnav-link d-none d-lg-block" href="#">ABOUT</a>
+    <div class="nav-link px-sm-5 px-4 topnav-link" ></div>
 </nav>
 <div class="container main-content">
     <div class="row">
@@ -74,25 +74,25 @@
         <div class="form-data">
             <div id="miasto-create" class="data-container">
                 <h3 class="data-label">Miasto: </h3>
-                <input type="text" name="miasto" id="miasto-create-input" class="db-input">
+                <input type="text" name="miasto" id="miasto-create-input" pattern="^[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]{1,20}$" required class="db-input">
             </div>
         </div>
         <div class="form-data">
             <div id="ulica-create" class="data-container">
                 <h3 class="data-label">Ulica: </h3>
-                <input type="text" name="ulica" id="ulica-create-input" class="db-input">
+                <input type="text" name="ulica" id="ulica-create-input" pattern="^[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]{1,20}$" required class="db-input">
             </div>
         </div>
         <div class="form-data">
             <div id="budynek-create" class="data-container">
                 <h3 class="data-label">nr_budynku: </h3>
-                <input type="text" name="nr_budynku" id="budynek-create-input" class="db-input">
+                <input type="text" name="nr_budynku" id="budynek-create-input" pattern="[0-9]+" required class="db-input">
             </div>
         </div>
         <div class="form-data">
             <div id="poczta-create" class="data-container">
                 <h3 class="data-label">id_poczty: </h3>
-                <input type="text" name="id_poczty" id="poczta-create-input" class="db-input">
+                <input type="text" name="id_poczty" id="poczta-create-input" pattern="[0-9]+" required class="db-input">
             </div>
         </div>
         <div class="form-data">
@@ -115,25 +115,25 @@
         <div class="form-data">
             <div id="miasto-data" class="data-container">
                 <h3 class="data-label">Miasto: </h3>
-                <input type="text" name="miasto" id="miasto-input" class="db-input">
+                <input type="text" name="miasto" id="miasto-input" pattern="^[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]{1,20}$" required class="db-input">
             </div>
         </div>
         <div class="form-data">
             <div id="ulica-data" class="data-container">
                 <h3 class="data-label">Ulica: </h3>
-                <input type="text" name="ulica" id="ulica-input" class="db-input">
+                <input type="text" name="ulica" id="ulica-input" pattern="^[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]{1,20}$" required class="db-input">
             </div>
         </div>
         <div class="form-data">
             <div id="budynek-data" class="data-container">
                 <h3 class="data-label">nr_budynku: </h3>
-                <input type="text" name="nr_budynku" id="budynek-input" class="db-input">
+                <input type="text" name="nr_budynku" pattern="[0-9]+" id="budynek-input" required class="db-input">
             </div>
         </div>
         <div class="form-data">
             <div id="poczta-data" class="data-container">
                 <h3 class="data-label">id_poczty: </h3>
-                <input type="text" name="id_poczty" id="poczta-input" class="db-input">
+                <input type="text" name="id_poczty" id="poczta-input" pattern="[0-9]+" required class="db-input">
             </div>
         </div>
         <div class="form-data">

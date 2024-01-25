@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/employee/adresy")
-@Secured("ROLE_USER")
+
 public class AdresyControllerEmployee {
     private final AdresyService adresyService;
 
