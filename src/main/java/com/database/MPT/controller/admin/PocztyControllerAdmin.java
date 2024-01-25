@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -22,20 +23,23 @@ public class PocztyControllerAdmin {
     public List<Poczty> getPoczty() { return pocztyService.getPoczty(); }
 
     @PostMapping
-    public void newPocztyEntity(@RequestBody Poczty poczta) {
+    public ModelAndView newPocztyEntity(@ModelAttribute Poczty poczta) {
         pocztyService.newPocztyEntity(poczta);
+        return new ModelAndView("redirect:/showPoczty");
     }
 
-    @DeleteMapping(path = "{pocztaId}")
-    public void deletePoczty(@PathVariable("pocztaId") Integer id) {
+    @DeleteMapping
+    public ModelAndView deletePoczty(@RequestParam("id") Integer id) {
         pocztyService.deletePoczty(id);
+        return new ModelAndView("redirect:/showPoczty");
     }
 
-    @PutMapping(path = "{pocztaId}")
-    public void updatePoczty(
-            @PathVariable("pocztaId") Integer id,
-            @RequestBody Poczty poczta
+    @PutMapping
+    public ModelAndView updatePoczty(
+            @RequestParam Integer id,
+            @ModelAttribute Poczty poczta
     ) {
         pocztyService.updatePoczty(id, poczta);
+        return new ModelAndView("redirect:/showPoczty");
     }
 }
